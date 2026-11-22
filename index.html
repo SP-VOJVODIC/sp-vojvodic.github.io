@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SP Vojvodić</title>
+  <meta name="description" content="SP Vojvodić - poslovni softver Knjigovodstvo ERP: preuzimanje verzija i novosti.">
+  <link rel="stylesheet" href="https://sp-vojvodic.github.io/public/style.css">
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="hero__content">
+        <p class="eyebrow">SP Vojvodić</p>
+        <h1>Poslovni softver</h1>
+        <p class="lead">
+          Knjigovodstvo ERP – aplikacija za glavnu knjigu, robno poslovanje, kasu,
+          plate, osnovna sredstva i prateće poslovne evidencije.
+        </p>
+        <div class="actions">
+          <a class="button button--primary" href="https://sp-vojvodic.github.io/public/">Knjigovodstvo ERP</a>
+          <a class="button" id="btn-download" href="https://github.com/SP-VOJVODIC/public/releases/latest">Preuzmi zadnju verziju</a>
+        </div>
+      </div>
+
+      <aside class="version-card">
+        <span class="card-label">Trenutna verzija</span>
+        <strong id="latest-version">Učitavanje…</strong>
+        <p id="latest-date">&nbsp;</p>
+        <p><a id="latest-novosti" href="https://github.com/SP-VOJVODIC/public/releases/latest">Šta je novo (PDF)</a></p>
+      </aside>
+    </section>
+
+    <section class="grid">
+      <article>
+        <h2>Knjigovodstvo ERP</h2>
+        <p>Opis programa, modula i načina ažuriranja.</p>
+        <a href="https://sp-vojvodic.github.io/public/">Otvori stranicu programa</a>
+      </article>
+      <article>
+        <h2>Ažuriranje</h2>
+        <p>Program pri pokretanju sam provjerava novu verziju. Paket se može preuzeti i ručno.</p>
+        <a href="https://github.com/SP-VOJVODIC/public/releases">Sve verzije</a>
+      </article>
+      <article>
+        <h2>Podrška</h2>
+        <p>Za pomoć, prijavu problema i zahtjeve obratite se SP Vojvodić.</p>
+      </article>
+    </section>
+
+    <section class="notes" id="notes-section" hidden>
+      <h2>Novo u zadnjoj verziji</h2>
+      <ul id="notes"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <span>SP Vojvodić</span>
+    <span>Knjigovodstvo ERP</span>
+  </footer>
+
+  <script src="https://sp-vojvodic.github.io/public/verzija.js"></script>
+</body>
+</html>
