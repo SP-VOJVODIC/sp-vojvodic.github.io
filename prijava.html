@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prijava problema – SP Vojvodić</title>
+  <meta name="description" content="Prijava problema u programu Knjigovodstvo ERP.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="https://sp-vojvodic.github.io/public/style.css">
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <style>
+    .forma {
+      max-width: 760px;
+      margin: 26px 0 0;
+      padding: 34px 40px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    .red { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .polje { display: flex; flex-direction: column; margin-bottom: 18px; }
+    .polje label { font-weight: 600; margin-bottom: 6px; }
+    .polje small { color: var(--muted); margin-top: 4px; }
+    .polje input, .polje select, .polje textarea {
+      font: inherit;
+      color: var(--text);
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+    }
+    .polje input:focus, .polje select:focus, .polje textarea:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 0;
+      border-color: var(--primary);
+    }
+    .polje textarea { min-height: 140px; resize: vertical; }
+    .obavezno { color: #b42318; }
+    .zamka { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .poruka { margin-top: 16px; padding: 14px 16px; border-radius: 6px; }
+    .poruka--ok { background: #e7f6ef; color: #0f5c40; border: 1px solid #a8dcc4; }
+    .poruka--greska { background: #fdecea; color: #8a1c12; border: 1px solid #f3b8b1; }
+    button.button { cursor: pointer; font: inherit; }
+    button.button[disabled] { opacity: .6; cursor: wait; }
+    @media (max-width: 820px) {
+      .forma { padding: 24px 18px; }
+      .red { grid-template-columns: 1fr; gap: 0; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <p class="eyebrow"><a href="https://sp-vojvodic.github.io/" style="color:inherit;text-decoration:none">SP Vojvodić</a></p>
+    <h1>Prijava problema</h1>
+    <p class="lead">
+      Opišite šta se desilo i mi ćemo se javiti. Prijava odmah stiže cijelom timu.
+    </p>
+
+    <form class="forma" id="forma" novalidate>
+      <div class="red">
+        <div class="polje">
+          <label for="ime">Ime i prezime <span class="obavezno">*</span></label>
+          <input id="ime" name="ime" maxlength="100" required autocomplete="name">
+        </div>
+        <div class="polje">
+          <label for="firma">Firma <span class="obavezno">*</span></label>
+          <input id="firma" name="firma" maxlength="150" required autocomplete="organization">
+        </div>
+      </div>
+      <div class="red">
+        <div class="polje">
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" maxlength="150" autocomplete="email">
+        </div>
+        <div class="polje">
+          <label for="telefon">Telefon</label>
+          <input id="telefon" name="telefon" maxlength="50" autocomplete="tel">
+        </div>
+      </div>
+      <div class="red">
+        <div class="polje">
+          <label for="verzija">Verzija programa</label>
+          <input id="verzija" name="verzija" maxlength="50" placeholder="npr. 26.11.22.1">
+          <small>Vidi se u programu: Pomoć → O programu.</small>
+        </div>
+        <div class="polje">
+          <label for="modul">Dio programa</label>
+          <select id="modul" name="modul">
+            <option value="">Ne znam / ostalo</option>
+            <option value="robno">Robno poslovanje</option>
+            <option value="kasa">Kasa (POS)</option>
+            <option value="gk">Finansije (glavna knjiga, KIF, KUF)</option>
+            <option value="ld">Plate i kadrovska</option>
+            <option value="os">Osnovna sredstva</option>
+            <option value="hov">Hartije od vrijednosti</option>
+            <option value="dashboard">Dashboard</option>
+            <option value="portal">Web portal</option>
+            <option value="sifarnici">Šifarnici</option>
+          </select>
+        </div>
+      </div>
+      <div class="polje">
+        <label for="naslov">Kratko – šta ne radi? <span class="obavezno">*</span></label>
+        <input id="naslov" name="naslov" maxlength="120" required placeholder="npr. Ne može se odštampati izlazni račun">
+      </div>
+      <div class="polje">
+        <label for="opis">Opis problema <span class="obavezno">*</span></label>
+        <textarea id="opis" name="opis" maxlength="8000" required placeholder="Šta ste radili, šta ste očekivali i šta se desilo. Ako se pojavila poruka, prepišite je."></textarea>
+      </div>
+      <div class="polje">
+        <label for="koraci">Koraci do greške</label>
+        <textarea id="koraci" name="koraci" maxlength="4000" placeholder="1. Otvorio sam ...&#10;2. Kliknuo sam ...&#10;3. ..."></textarea>
+      </div>
+      <div class="zamka" aria-hidden="true">
+        <label for="web">Web</label>
+        <input id="web" name="web" tabindex="-1" autocomplete="off">
+      </div>
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAAGOzmcDw8GJ5YdCo" data-language="sr"></div>
+      <p style="color:var(--muted);font-size:14px">
+        Snimak ekrana možete poslati na <a href="mailto:sp-vojvodic@gmail.com">sp-vojvodic@gmail.com</a>
+        uz broj prijave koji dobijete.
+      </p>
+      <button class="button button--primary" type="submit" id="posalji">Pošalji prijavu</button>
+      <div id="poruka" class="poruka" hidden role="status"></div>
+    </form>
+  </main>
+
+  <footer>
+    <span>© SP Vojvodić</span>
+    <span><a href="https://sp-vojvodic.github.io/">Početna</a></span>
+  </footer>
+
+  <script>
+    (function () {
+      var WORKER_URL = "https://prijava.sp-vojvodic.workers.dev";
+      var forma = document.getElementById("forma");
+      var dugme = document.getElementById("posalji");
+      var poruka = document.getElementById("poruka");
+
+      function prikazi(tekst, ok) {
+        poruka.textContent = tekst;
+        poruka.className = "poruka " + (ok ? "poruka--ok" : "poruka--greska");
+        poruka.hidden = false;
+      }
+      function vrijednost(id) { return document.getElementById(id).value.trim(); }
+
+      forma.addEventListener("submit", function (e) {
+        e.preventDefault();
+        poruka.hidden = true;
+        var nedostaje = ["ime", "firma", "naslov", "opis"].filter(function (id) { return !vrijednost(id); });
+        if (nedostaje.length) {
+          document.getElementById(nedostaje[0]).focus();
+          prikazi("Popunite obavezna polja (označena sa *).", false);
+          return;
+        }
+        var tokenPolje = forma.querySelector("[name='cf-turnstile-response']");
+        var token = tokenPolje ? tokenPolje.value : "";
+        if (!token) { prikazi("Sačekajte da se završi provjera ispod forme, pa pokušajte ponovo.", false); return; }
+
+        var podaci = { turnstile: token };
+        ["ime", "firma", "email", "telefon", "verzija", "modul", "naslov", "opis", "koraci", "web"].forEach(function (id) {
+          podaci[id] = vrijednost(id);
+        });
+
+        dugme.disabled = true;
+        dugme.textContent = "Šaljem…";
+        fetch(WORKER_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(podaci)
+        })
+          .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
+          .then(function (res) {
+            if (res.ok && res.j.ok) {
+              forma.querySelectorAll("input, textarea, select").forEach(function (el) { if (el.name !== "cf-turnstile-response") el.value = ""; });
+              prikazi("Hvala! Prijava je primljena" + (res.j.broj ? " pod brojem " + res.j.broj : "") + ". Javićemo vam se uskoro.", true);
+            } else {
+              prikazi(res.j.greska || "Prijava nije poslata. Pokušajte ponovo ili pišite na sp-vojvodic@gmail.com.", false);
+            }
+          })
+          .catch(function () {
+            prikazi("Nema veze sa serverom. Pokušajte ponovo ili pišite na sp-vojvodic@gmail.com.", false);
+          })
+          .then(function () {
+            dugme.disabled = false;
+            dugme.textContent = "Pošalji prijavu";
+            if (window.turnstile) window.turnstile.reset();
+          });
+      });
+    })();
+  </script>
+</body>
+</html>
